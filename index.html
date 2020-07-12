@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
 		<title></title>
 	</head>
 	<body>
-	<p>hello world!</p>	
+		<p>hello world</p>
+		<script type="text/javascript">
+			var httpRequest = new XMLHttpRequest();
+			var json = '';
+			httpRequest.open('GET', '1.json', true);
+			httpRequest.send();
+			httpRequest.onreadystatechange = qq_fh;
+
+			function qq_fh() {
+				if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+					var txt = httpRequest.responseText;
+					console.log(txt);
+				}
+			};
+		</script>
 	</body>
 </html>
