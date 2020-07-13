@@ -5,20 +5,29 @@
 		<title></title>
 	</head>
 	<body>
-		<p>hello world</p>
+		<ol id="lb">
+			
+		</ol>
 		<script type="text/javascript">
 			var httpRequest = new XMLHttpRequest();
-			var json = '';
+			var lb_id=document.getElementById("lb")
 			httpRequest.open('GET', 'lb.json', true);
 			httpRequest.send();
 			httpRequest.onreadystatechange = qq_fh;
 
 			function qq_fh() {
 				if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-					var txt = httpRequest.responseText;
-					console.log(txt);
+					var json = httpRequest.responseText;
+					console.log(json);
+					console.log(json.text.length);
+					for(i=0;i<json.text.length;i++){
+						lb_id.innerHTML+="<li>"+json.text[i].name_all+"</li>"
+					}
+					
 				}
 			};
+			
+			
 		</script>
 	</body>
 </html>
