@@ -17,11 +17,12 @@
 
 			function qq_fh() {
 				if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-					var json = httpRequest.responseText;
-					console.log(json);
-					console.log(json.text.length);
-					for(i=0;i<json.text.length;i++){
-						lb_id.innerHTML+="<li>"+json.text[i].name_all+"</li>"
+					var sj = httpRequest.responseText;	 //获取并接受返回数据
+					sj=JSON.parse(sj);//字符串转成对象
+					
+					//循环输出到页面
+					for(i=0;i<sj.text.length;i++){
+						lb_id.innerHTML+="<li><a href='http://api.cwsya.com/lzy.php?"+sj.text[i].id+"'>"+sj.text[i].name_all+"</a></li>"
 					}
 					
 				}
