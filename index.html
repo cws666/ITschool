@@ -2,15 +2,69 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<title></title>
 	</head>
 	<body>
-		<ol id="lb">
-			
-		</ol>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <a class="navbar-brand" href="http://www.cwsya.com/"><img src="http://www.cwsya.com/usr/themes/Akina/images/akinadeaava.jpg" width="30" height="30" alt="">ITschool</a>
+		
+		  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+		    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="#">首页</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="http://www.cwsya.com/">关于</a>
+		      </li>
+			  <li class="nav-item">
+		        <a class="nav-link" href="http://www.cwsya.com/">作者博客</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link disabled" href="#">Disabled</a>
+		      </li>
+		    </ul>
+		    <form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		  </div>
+		</nav>
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">名称</th>
+		      <th scope="col">大小</th>
+		      <th scope="col">类型</th>
+		      <th scope="col">下载</th>
+		    </tr>
+		  </thead>
+		  
+		  
+		  <tbody id="lb">
+		    <!-- <tr>
+		      <th scope="row">1</th>
+		      <td>Mark</td>
+		      <td>Otto</td>
+		      <td>@mdo</td>
+		    </tr> -->
+		  </tbody>
+		</table>
+		
+		
+		
+		
+		
+		
 		<script type="text/javascript">
 			var httpRequest = new XMLHttpRequest();
 			var lb_id=document.getElementById("lb")
+			var xh=0,mc,dx,lx,xz;
 			httpRequest.open('GET', 'lb.json', true);
 			httpRequest.send();
 			httpRequest.onreadystatechange = qq_fh;
@@ -19,10 +73,26 @@
 				if (httpRequest.readyState == 4 && httpRequest.status == 200) {
 					var sj = httpRequest.responseText;	 //获取并接受返回数据
 					sj=JSON.parse(sj);//字符串转成对象
-					
 					//循环输出到页面
 					for(i=0;i<sj.text.length;i++){
-						lb_id.innerHTML+="<li><a href='http://api.cwsya.com/lzy.php?"+sj.text[i].id+"'>"+sj.text[i].name_all+"</a></li>"
+						// lb_id.innerHTML+="<tbody>";
+						// lb_id.innerHTML+="<tr><th scope='row'>"+(i+1)+"</th><td>"+sj.text[i].name_all+"</td><td>"+sj.text[i].size+"</td>";
+						xh="<th scope='row'>"+(i+1)+"</th>";
+						mc="<td>"+sj.text[i].name_all+"</td>"
+						dx="<td>"+sj.text[i].size+"</td>"
+						lx="<td>"+sj.text[i].icon+"</td>";
+						xz="<td>"+sj.text[i].id+"</td>";
+						lb_id.innerHTML+="<tr>"+xh+mc+dx+lx+xz+"</tr>";
+						// lb_id.innerHTML+="<tr>";
+						// lb_id.innerHTML+="<th scope='row'>"+(i+1)+"</th>";
+						// lb_id.innerHTML+="<td>"+sj.text[i].name_all+"</td>";
+						// lb_id.innerHTML+="<td>"+sj.text[i].size+"</td>";
+						// lb_id.innerHTML+="<td>"+sj.text[i].icon+"</td>";
+						// lb_id.innerHTML+="<td>"+sj.text[i].id+"</td>";
+						// lb_id.innerHTML+="</tr>";
+						// lb_id.innerHTML+="</tbody>";
+						// lb_id.innerHTML+="<li><a href='http://api.cwsya.com/lzy.php?"+sj.text[i].id+"'>"+sj.text[i].name_all+"</a></li>"
+						
 					}
 					
 				}
