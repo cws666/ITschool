@@ -1,7 +1,7 @@
 var httpRequest = new XMLHttpRequest();
 var lb_id = document.getElementById("lb")
 var xh = 0,
-	mc, dx, lx, xz;
+	mc, dx, lx, xz, id,xz1;
 httpRequest.open('GET', 'lb.json', true);
 httpRequest.send();
 httpRequest.onreadystatechange = qq_fh;
@@ -17,8 +17,10 @@ function qq_fh() {
 			mc = "<td>" + sj.text[i].name_all + "</td>"
 			dx = "<td>" + sj.text[i].size + "</td>"
 			lx = "<td>" + sj.text[i].icon + "</td>";
-			xz = "<td>" + sj.text[i].id + "</td>";
-			lb_id.innerHTML += "<tr><a name='" + sj.text[i].id + "'>" + xh + mc + dx + lx + xz + "</a></tr>";
+			console.log(typeof sj.text[i].id)
+			xz1="<a id='a_"+i+"' onclick='down("+i+")' name='"+sj.text[i].id+"'>点我下载</a>"
+			xz = "<td class='xzcl'>"+xz1+"</td>";
+			lb_id.innerHTML += "<tr>" + xh + mc + dx + lx + xz + "</tr>";
 			// lb_id.innerHTML+="<tr>";
 			// lb_id.innerHTML+="<th scope='row'>"+(i+1)+"</th>";
 			// lb_id.innerHTML+="<td>"+sj.text[i].name_all+"</td>";
@@ -32,3 +34,7 @@ function qq_fh() {
 
 	}
 };
+
+function down(xh_id){
+	alert(document.getElementById("a_"+xh_id).name);
+}
