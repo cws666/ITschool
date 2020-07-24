@@ -42,7 +42,7 @@ function down(xh_id) {
 	ajax_zhilian.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	ajax_zhilian.send("url=https://cws.lanzous.com/" + document.getElementById("a_" + xh_id).name);
 	ajax_zhilian.onreadystatechange = function() {
-
+  
 		if (ajax_zhilian.readyState == 4 && ajax_zhilian.status == 200) {
 
 			console.log(ajax_zhilian.responseText);
