@@ -23,9 +23,13 @@ function qq_fh() {
 			lb_id.innerHTML += "<tr>" + xh + mc + dx + lx + xz + "</tr>";
 
 		}
+		$(function(){
+			$("tr:odd").css("background-color","#ebebeb")
+		})
 
 	}
 };
+
 
 function down(xh_id) {
 	console.log(document.getElementById("a_" + xh_id).name);
