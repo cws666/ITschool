@@ -7,7 +7,7 @@ httpRequest.send();
 httpRequest.onreadystatechange = qq_fh;
 
 function qq_fh() {
-		var sj = httpRequest.responseText; //获取并接受返回数据
+	var sj = httpRequest.responseText; //获取并接受返回数据
 	if (httpRequest.readyState == 4 && httpRequest.status == 200) {
 		sj = JSON.parse(sj); //字符串转成对象
 		$("#jzz").remove();
@@ -23,8 +23,8 @@ function qq_fh() {
 			lb_id.innerHTML += "<tr>" + xh + mc + dx + lx + xz + "</tr>";
 
 		}
-		$(function(){
-			$("tr:odd").css("background-color","#ebebeb")
+		$(function() {
+			$("tr:odd").css("background-color", "#ebebeb")
 		})
 
 	}
@@ -34,7 +34,7 @@ function qq_fh() {
 function down(xh_id) {
 	console.log(document.getElementById("a_" + xh_id).name);
 	var ajax_zhilian = new XMLHttpRequest();
-	ajax_zhilian.open('POST', 'http://api.cwsya.com/lanzou/index.php', true);
+	ajax_zhilian.open('POST', './api/index.php', true);
 	ajax_zhilian.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	ajax_zhilian.send("url=https://cws.lanzous.com/" + document.getElementById("a_" + xh_id).name);
 	ajax_zhilian.onreadystatechange = function() {
