@@ -5,7 +5,6 @@ var xh = 0,
 httpRequest.open('GET', 'lb.json', true);
 httpRequest.send();
 httpRequest.onreadystatechange = qq_fh;
-
 function qq_fh() {
 	var sj = httpRequest.responseText; //获取并接受返回数据
 	if (httpRequest.readyState == 4 && httpRequest.status == 200) {
@@ -21,7 +20,7 @@ function qq_fh() {
 			xz1 = "<a id='a_" + i + "' onclick='down(" + i + ")' name='" + sj.text[i].id + "'>点我下载</a>"
 			xz = "<td class='xzcl'>" + xz1 + "</td>";
 			lb_id.innerHTML += "<tr>" + xh + mc + dx + lx + xz + "</tr>";
-
+			
 		}
 		$(function() {
 			$("tr:odd").css("background-color", "#ebebeb")
@@ -32,20 +31,4 @@ function qq_fh() {
 
 
 function down(xh_id) {
-	console.log(document.getElementById("a_" + xh_id).name);
-	var ajax_zhilian = new XMLHttpRequest();
-	ajax_zhilian.open('POST', './api/index.php', true);
-	ajax_zhilian.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	ajax_zhilian.send("url=https://cws.lanzous.com/" + document.getElementById("a_" + xh_id).name);
-	ajax_zhilian.onreadystatechange = function() {
-
-		if (ajax_zhilian.readyState == 4 && ajax_zhilian.status == 200) {
-
-			console.log(ajax_zhilian.responseText);
-
-
-		}
-
-	}
-
 }
